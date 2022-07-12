@@ -1,19 +1,19 @@
 /**
  * @jest-environment jsdom
  */
-const puppeteer = require('puppeteer')
-const path = require('path')
-const hotkeys = require('../dist/hotkeys')
+import puppeteer from 'puppeteer'
+import path from 'path'
+import hotkeys from '../lib/index.js'
 
 let browser
 let page
 
-// expect().toEqual() ：判断结果是否和预期等价。
-// expect().toBeFalsy() ：判断结果是否为假。
-// expect().toBeTruthy() ：判断结果是否为真。
+// expect().toEqual() : Determine whether the result is equivalent to the expected.
+// expect().toBeFalsy() : Determines whether the result is false.
+// expect().toBeTruthy() : Determines whether the result is true.
 
 const isff = navigator.userAgent.toLowerCase().indexOf('firefox') > 0
-// 模拟键盘摁键
+// Simulate keyboard presses
 // http://output.jsbin.com/awenaq/3
 function __triggerKeyboardEvent (el, keyCode, opt) {
   const eventObj = document.createEventObject ? document.createEventObject() : document.createEvent('Events')
@@ -432,8 +432,8 @@ describe('\n   Hotkeys.js Test Case222.\n', () => {
     })
     /**
      * https://github.com/jaywcjlove/hotkeys/issues/55
-     * 解决三键组合，实现键值比对，
-     * 并不是对象比对，此测试用例无法模拟
+     * Solve the three-key combination, realize the key-value comparison,
+     * It is not an object comparison, this test case cannot be simulated
      */
     expect(callbackA.mock.calls.length).toBe(1)
 
